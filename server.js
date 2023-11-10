@@ -1,24 +1,32 @@
 const express = require('express');
+const http = require('http');
+const socketIo = require('socket.io');
 const bodyParser = require('body-parser');
 const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
 const port = 3000;
 
-// Middleware to parse incoming requests
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Route for form submission
+let reports = []; // In-memory storage for reports
+
 app.post('/submit-report', (req, res) => {
-    console.log('Form submission received:');
-    console.log('Room Number:', req.body['room-number']);
-    console.log('Date:', req.body['current-date']);
-    console.log('Time:', req.body['current-time']);
-    console.log('Reporter:', req.body.reporter);
-    console.log('Contact:', req.body.contact);
-    console.log('Issues:', req.body.issue); // This will be an array if multiple checkboxes are selected
-    console.log('Other Issues:', req.body['other-issues']);
+    const newReport = req.body;
+    reports.push(newReport);
+    io.emit('new report', newReport); // Emitting new report to all connected clients
     res.send('Report received');
 });
 
-app.listen(port, () => {
+io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.emit('all reports', reports); // Send all reports to newly connected client
+});
+
+server.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+app.get('/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'admin.html'));
+  });
+  

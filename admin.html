@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Add other necessary head elements -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    socket.on('new report', function(report) {
+      // Handle the new report, e.g., append it to a list
+      console.log('New report:', report);
+    });
+
+    socket.on('all reports', function(reports) {
+      // Handle all reports, e.g., display them on the page
+      console.log('All reports:', reports);
+    });
+  </script>
+</head>
+<body>
+  <!-- Your HTML content -->
+</body>
+</html>
