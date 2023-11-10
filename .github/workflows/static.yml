@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maintenance Issue Report</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    color: #333;
+    text-align: center;
+  }
+  .checkbox-group {
+    margin-bottom: 20px;
+  }
+  .checkbox-group label {
+    display: block;
+    margin: 10px 0;
+  }
+  input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  input[type="submit"] {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    box-sizing: border-box;
+  }
+  input[type="submit"]:hover {
+    background-color: #4cae4c;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Maintenance Issue Report Form</h1>
+
+  <form id="issue-report-form">
+    <!-- These fields are auto-filled by the system -->
+    <input type="hidden" id="room-number" name="room-number">
+    <input type="hidden" id="current-date" name="current-date">
+    <input type="hidden" id="current-time" name="current-time">
+    <input type="hidden" id="reporter" name="reporter">
+    <input type="hidden" id="contact" name="contact">
+
+    <div class="checkbox-group">
+      <p>Please select the issue(s):</p>
+      <label><input type="checkbox" name="issue" value="no-paper"> No paper</label>
+      <label><input type="checkbox" name="issue" value="no-pens"> No pens</label>
+      <label><input type="checkbox" name="issue" value="lighting"> Lighting issues</label>
+      <label><input type="checkbox" name="issue" value="power"> Power outage</label>
+      <label><input type="checkbox" name="issue" value="furniture"> Broken furniture</label>
+      <label><input type="checkbox" name="issue" value="ac"> Air conditioning malfunction</label>
+      <label><input type="checkbox" name="issue" value="projector"> Projector not working</label>
+      <label><input type="checkbox" name="issue" value="wifi"> Wi-Fi connectivity issues</label>
+      <label><input type="checkbox" name="issue" value="other"> Other (please specify below)</label>
+    </div>
+
+    <label for="other-issues">If other issues are present, please describe:</label>
+    <textarea id="other-issues" name="other-issues" rows="4" style="width:100%;"></textarea>
+
+    <input type="submit" value="Submit Report">
+  </form>
+</div>
+
+<script>
+// Assuming the system fills these values through some backend process
+// If this is not the case, and you need to populate them through JavaScript, you can handle it here
+</script>
+
+</body>
+</html>
